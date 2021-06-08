@@ -1,0 +1,34 @@
+<!-- app/view/users/new.html/.erb -->
+
+<h1>Signup!</h1>
+
+<div>
+<p>
+	Params.inspect
+	<%= params.inspect %>
+</p>
+</div>
+
+<%= form_with model: @user do |f| %>
+	<p>
+		First Name: <%= f.text_field :first_name %>
+	</p>
+	<p>	
+		Last Name: <%= f.text_field :last_name %>
+	</p>
+	<p>			
+		Email: <%= f.text_field :email %>
+	</p>
+	<p>			
+		Password: <%= f.password_field :password %>
+	</p>
+	<p>			
+		Password Confirmation: <%= f.password_field :password_confirmation %>
+	</p>
+	<p>			
+		<%= f.submit "Submit" %> 
+	</p>
+<%end%>
+
+
+<%= link_to "Home", root_path %>

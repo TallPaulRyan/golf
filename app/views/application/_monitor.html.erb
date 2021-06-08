@@ -1,0 +1,17 @@
+<div>
+	<h3> -- Monitor -- </h3>
+	<p>
+		params: <%= params.inspect %></br>
+		session_id: <%= session[:user_id] %></br>
+	</p>
+	<p>
+		<% if current_user %>
+			Signed in as <%= current_user.first_name %> <%= current_user.last_name %> | <%= link_to "Logout", '/logout' %><br>
+			Current user id 
+		<% else %>
+			Not signed in!
+			<%= link_to "Login", '/login' %> | <%= link_to "Signup", new_user_path %> 
+		<% end %>
+	</p>
+	<h3> -- End --  </h3>
+</div>

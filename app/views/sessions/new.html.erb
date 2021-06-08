@@ -1,0 +1,15 @@
+<!-- app/views/sessions/new.html.erb -->
+<h1> sessions/new.html.erb </h1>
+
+<h1> Login </h1>
+
+
+<%= form_with url: '/login' do |f| %>
+	<p>
+	Email: <%= f.text_field :email %> <br>
+	Password: <%= f.password_field :password %>
+	</p>
+	<%= f.submit "Submit" %>
+<% end %> 
+
+<%= link_to "Home", root_path %>
