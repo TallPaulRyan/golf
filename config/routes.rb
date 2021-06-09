@@ -8,5 +8,14 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   resources :users, only: [:new, :create]
+  resources :scores
   
+  resources :courses do
+    resources :course_details, only: [:index, :new, :create, :destroy]
+  end
+
+  scope :courses, via: [:get, :post] do
+    match 'initializeCourseDetails' => 'courses#initialize_course_details', as: :initialize_course_details 
+  end
+
 end

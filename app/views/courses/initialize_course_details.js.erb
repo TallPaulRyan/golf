@@ -1,0 +1,17 @@
+<% if params[:course].blank? %>
+	
+	var f = document.querySelector('#details-wrapper');
+	while (f.firstChild) {
+		f.removeChild(f.firstChild)
+	}
+
+<% else %>
+	
+	var f = document.querySelector('#details-wrapper');
+	while (f.firstChild) {
+		f.removeChild(f.firstChild)
+	}
+
+	document.querySelector('#details-wrapper').insertAdjacentHTML('afterbegin', '<%= escape_javascript(render "form") %>');
+	<%# document.querySelector('#course-layout').reset(); %>
+<% end %>
