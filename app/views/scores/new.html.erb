@@ -1,0 +1,20 @@
+<h1> scores/new.html/erb </h1>
+
+<%= render "monitor" %>
+
+<!-- This seems the wrong approach -->
+<%= form_with model: @course, url: initialize_score_details_path do |s| %>
+	<%= s.label :course %>
+	<%= s.select :course_name, @courses %>
+	<%= s.submit %>
+<% end %>
+
+
+<div id="details-wrapper">
+	<% if @course %>
+		<%= render "form" %>
+	<% end %>
+</div>
+
+
+<%= link_to "Scores Home", scores_path %>

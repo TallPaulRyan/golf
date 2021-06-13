@@ -14,6 +14,7 @@
 			<td><%= course.course_name %></td>
 			<td><%= course.holes %></td>
 			<td><%= course.par %></td>
+			<td><%= link_to "Course Details", course_course_details_path(course) %></td>
 			<td><%= link_to "Delete", course_path(course),
 					method: :delete,
 					data: { confirm: "Are you sure?" } %></td>
@@ -22,5 +23,5 @@
 
 </table>
 
-
+<%= link_to 'create_course', new_course_path %><br>
 <%= link_to "Home", root_path %>

@@ -3,11 +3,13 @@ class CourseDetailsController < ApplicationController
   before_action :authorize
 
   def index
-    @course_details = Course_detail.all
+    @course = Course.find(params[:course_id])
+    @course_details = @course.course_details.all
   end
 
   def show
-    @course_detail = Course_detail.find(params[:id])
+    @course = Course.find(params[:course_id])
+    @course_details = @course.course_detail.all
   end
 
   def new

@@ -1,5 +1,3 @@
-require 'pry'
-
 class CoursesController < ApplicationController
 
   before_action :authorize

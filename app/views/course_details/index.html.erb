@@ -1,0 +1,19 @@
+<h1> course details index </h1>
+
+
+<table>
+	<tr>
+		<th> Hole </th>
+		<% @course_details.each do |cd| %>
+		<th><%= cd.hole_number %></th>
+		<% end %>
+	</tr>
+	<tr>
+		<th> Par </th>
+		<% @course_details.each do |cd| %>
+		<td><%= cd.hole_par %></td>
+		<% end %>
+	</tr>
+</table>
+
+<%= link_to "courses index", courses_path %>

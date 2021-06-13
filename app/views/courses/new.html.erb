@@ -1,8 +1,6 @@
 <!-- app/view/courses/new.html.erb -->
 <h1> Create new course! </h1>
 
-<%= render 'monitor' %>
-
 <%= form_with model: @course, url: initialize_course_details_path do |f| %>
 	Course Name: <%= f.text_field :course_name %><br>
 	# of holes: <%= f.number_field :holes %><br>
