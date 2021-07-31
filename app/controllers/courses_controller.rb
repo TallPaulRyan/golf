@@ -1,3 +1,5 @@
+require 'pry'
+
 class CoursesController < ApplicationController
 
   before_action :authorize
@@ -40,7 +42,18 @@ class CoursesController < ApplicationController
     end
   end
 
+  def update
+    binding.pry
+    @course = Course.find(params[:id])
+    if @course.update(course_score_params)
+      redirect_to root_path
+    else
+      redirect_to new_score_path
+    end
+  end
+
   def destroy
+    # This would also destroy all scores...
     @course = Course.find(params[:id])
     @course.destroy
 
@@ -55,5 +68,9 @@ class CoursesController < ApplicationController
 
     def course_details_params
       params.require(:course).permit(:course_name, :holes, :par, course_details_attributes: [:hole_number, :hole_par])
+    end
+
+    def course_score_params
+      params.require(:course).permit(scores_attributes: [:course_id, :hole_number, :hole_score])
     end
 end

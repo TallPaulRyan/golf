@@ -6,15 +6,14 @@ class ScoresController < ApplicationController
   end
 
   def new
-    @courses = Course.get_courses
+    @courses = Course.all
   end
 
   def initialize_score_details
-    binding.pry
-    @course = Course.find_by course_name: params[:course_name]
-    @course_holes = CourseDetail.get_holes(params[:course_name])
+    @course = Course.find(params[:course_id])
     respond_to do |format|
       if @course
+        (@course.holes).times { @course.scores.build }
         format.js
       else
         format.html { render 'new' }
@@ -22,18 +21,9 @@ class ScoresController < ApplicationController
     end
   end
 
-  def create
-    @score = Score.new(params)
-    if @score.save!
-      redirect_to scores_path
-    else
-      redirect_to new_score_path
-    end
-  end
-
   private
 
-  def course_params
-    params.require(:course).permit(:course_name, :holes, :par)
+  def score_params
+    params.require(:score).permit([:hole_number, :hole_score])
   end
 end

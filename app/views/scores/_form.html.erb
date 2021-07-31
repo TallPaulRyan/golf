@@ -1,12 +1,10 @@
 <h1> scores/_form </h1>
 
-<%= render "monitor" %>
-
-
-<%= form_with model: @course, id: "score-form", local:false do |c| %>
-	<%= c.hidden_field :course_id, value: @course.id %>
-	<%= c.fields_for :course_holes do |cd| %>
-		<%= cd.text_field :hole_score %><br>
+<%= form_with model: @course, id: "score-form", local: false do |c| %>
+	<%= c.fields_for :scores do |s| %>
+		<%= s.label :hole_number, "Hole #{s.index + 1}" %>
+		<%= s.hidden_field :hole_number, value: s.index + 1 %>
+		<%= s.text_field :hole_score %><br>
 	<% end %>
 	<%= c.submit %>
 <% end %>

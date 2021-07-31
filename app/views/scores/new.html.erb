@@ -1,17 +1,15 @@
+<!-- app/view/scores/new.html.erb -->
 <h1> scores/new.html/erb </h1>
 
-<%= render "monitor" %>
-
-<!-- This seems the wrong approach -->
-<%= form_with model: @course, url: initialize_score_details_path do |s| %>
-	<%= s.label :course %>
-	<%= s.select :course_name, @courses %>
-	<%= s.submit %>
+<%= form_with model: @course, url: initialize_score_details_path do |c| %>
+	<%= c.label :course %>
+	<%= c.select :course_id, @courses.collect { |course| [course.course_name, course.id] } %>
+	<%= c.submit %>
 <% end %>
 
 
 <div id="details-wrapper">
-	<% if @course %>
+	<% if @course_details %>
 		<%= render "form" %>
 	<% end %>
 </div>

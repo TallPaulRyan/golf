@@ -1,6 +1,6 @@
 <h1> Test Result Header </h1>
 
-<%= form_with model: @course, id: "course-form", local:false do |c| %>
+<%= form_with model: @course, id: "course-form", local: false do |c| %>
 	<%= c.hidden_field :course_name, value: @course.course_name %>
 	<%= c.hidden_field :holes, value: @course.holes %>
 	<%= c.hidden_field :par, value: @course.par %>

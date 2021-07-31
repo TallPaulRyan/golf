@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   
   resources :courses do
     resources :course_details, only: [:index, :new, :create, :destroy, :show]
+    resources :scores, only: [:index, :new, :create, :destroy, :show]
   end
 
   scope :courses, via: [:get, :post] do
@@ -20,6 +21,5 @@ Rails.application.routes.draw do
 
   scope :scores, via: [:get, :post] do
     match 'initializeScoreDetails' => 'scores#initialize_score_details', as: :initialize_score_details
-    # match 'initializeScoreDetails' => 'scores#test', as: :initialize_score_details    
   end
 end
